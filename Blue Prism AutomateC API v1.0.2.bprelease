@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bpr:release xmlns:bpr="http://www.blueprism.co.uk/product/release">
+    <bpr:name>Blue Prism AutomateC API v1.0.2</bpr:name>
+    <bpr:release-notes>Release with filename from Blueprism to Blue Prism</bpr:release-notes>
+    <bpr:created>2021-05-20 19:45:30Z</bpr:created>
+    <bpr:package-id>2042</bpr:package-id>
+    <bpr:package-name>Blue Prism AutomateC API</bpr:package-name>
+    <bpr:user-created-by>admin</bpr:user-created-by>
+    <bpr:contents count="1">
+        <webapiservice id="ab80ae0d-72a2-4f07-9441-e3336972a240" name="Blue Prism AutomateC API" enabled="true" xmlns="http://www.blueprism.co.uk/product/webapiservice">
+            <configuration baseurl="[hostUrl]" xmlns="">
+                <actions>
+                    <action id="6353" name="Reset" enabled="true" enableRequestOutputParameter="false" disableSendingOfRequest="false">
+                        <description><![CDATA[Tries to reset the machine by killing BP process (automate.exe), forcibly logging off all users and restarting BP Login Agent service]]></description>
+                        <request httpmethod="POST" urlpath="/reset">
+                            <headers />
+                            <bodycontent type="0"></bodycontent>
+                        </request>
+                        <parameters />
+                        <outputparameters>
+                            <parameters />
+                            <code><![CDATA[]]></code>
+                        </outputparameters>
+                    </action>
+                    <action id="6354" name="Run Process" enabled="true" enableRequestOutputParameter="false" disableSendingOfRequest="false">
+                        <description><![CDATA[Requests starting new process. Process name must be supplied]]></description>
+                        <request httpmethod="POST" urlpath="/processes">
+                            <headers>
+                                <httpheader name="Content-Type" value="application/json" />
+                            </headers>
+                            <bodycontent type="1">
+                                <template><![CDATA[{
+  "process": "[Process Name]"
+}]]></template>
+                            </bodycontent>
+                        </request>
+                        <parameters>
+                            <actionparameter name="Process Name" expose="true" datatype="64">
+                                <initialvalue><![CDATA[]]></initialvalue>
+                                <description><![CDATA[]]></description>
+                            </actionparameter>
+                        </parameters>
+                        <outputparameters>
+                            <parameters />
+                            <code><![CDATA[]]></code>
+                        </outputparameters>
+                    </action>
+                    <action id="6355" name="Get Session Status" enabled="true" enableRequestOutputParameter="false" disableSendingOfRequest="false">
+                        <description><![CDATA[Returns status of the process supplied in the URL path. Session ID (usually obtained when starting the process) must be supplied.]]></description>
+                        <request httpmethod="GET" urlpath="/processes/[Session Id]">
+                            <headers />
+                            <bodycontent type="0"></bodycontent>
+                        </request>
+                        <parameters>
+                            <actionparameter name="Session Id" expose="true" datatype="64">
+                                <initialvalue><![CDATA[]]></initialvalue>
+                                <description><![CDATA[The executed process session id.]]></description>
+                            </actionparameter>
+                        </parameters>
+                        <outputparameters>
+                            <parameters />
+                            <code><![CDATA[]]></code>
+                        </outputparameters>
+                    </action>
+                    <action id="6356" name="Request Stop Process" enabled="true" enableRequestOutputParameter="false" disableSendingOfRequest="false">
+                        <description><![CDATA[Requests process supplied in the URL path to stop. Session ID (usually obtained when starting the process) must be supplied.]]></description>
+                        <request httpmethod="POST" urlpath="/processes/[Session Id]/stop">
+                            <headers />
+                            <bodycontent type="0"></bodycontent>
+                        </request>
+                        <parameters>
+                            <actionparameter name="Session Id" expose="true" datatype="64">
+                                <initialvalue><![CDATA[]]></initialvalue>
+                                <description><![CDATA[The executed process session id.]]></description>
+                            </actionparameter>
+                        </parameters>
+                        <outputparameters>
+                            <parameters />
+                            <code><![CDATA[]]></code>
+                        </outputparameters>
+                    </action>
+                </actions>
+                <commonparameters>
+                    <actionparameter name="hostUrl" expose="true" datatype="64">
+                        <initialvalue><![CDATA[]]></initialvalue>
+                        <description><![CDATA[End point Url.]]></description>
+                    </actionparameter>
+                </commonparameters>
+                <commonheaders />
+                <commonauthentications>
+                    <authentication type="0" />
+                </commonauthentications>
+                <commoncode>
+                    <codeproperties code="" language="visualbasic">
+                        <namespaces>
+                            <namespace>System</namespace>
+                            <namespace>System.Drawing</namespace>
+                            <namespace>System.Data</namespace>
+                        </namespaces>
+                        <references>
+                            <reference>System.dll</reference>
+                            <reference>System.Data.dll</reference>
+                            <reference>System.Xml.dll</reference>
+                            <reference>System.Drawing.dll</reference>
+                        </references>
+                    </codeproperties>
+                </commoncode>
+                <configurationsettings>
+                    <configurationsettings requesttimeout="30" authserverrequesttimeout="10" />
+                </configurationsettings>
+            </configuration>
+        </webapiservice>
+    </bpr:contents>
+</bpr:release>
